@@ -13,8 +13,14 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Constants from "expo-constants";
+import { NavigationContainer, TabActions } from "@react-navigation/native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Foundation } from "@expo/vector-icons";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Ionicons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 
-export default function App() {
+function Home() {
   const recommendations = [
     {
       thumbnail: require("./img/spotify_album_thumbnail_1.jpg"),
@@ -104,7 +110,7 @@ export default function App() {
       />
       <ScrollView
         style={{
-          paddingTop: 16,
+          paddingTop: 16 + Constants.statusBarHeight,
           // paddingLeft: 16,
           // paddingRight: 8,
           flex: 1,
@@ -257,6 +263,66 @@ export default function App() {
         </View>
       </ScrollView>
     </View>
+  );
+}
+
+function Search() {
+  return (
+    <View style={styles.container}>
+      <Text>Search</Text>
+    </View>
+  );
+}
+
+function YourLibrary() {
+  return (
+    <View style={styles.container}>
+      <Text>Your Library</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Tab.Navigator
+        screenOptions={({ route }) => ({
+          tabBarIcon: ({ focused, color, size }) => {
+            let source;
+            if (route.name === "Home") {
+              source = focused ? require("./img/icons/home.png") : require("./img/icons/home-outline.png")
+              return (
+                <Image source={source} style={{ height: 32, width: 32 }} />
+              );
+            }
+            if (route.name === "Search") {
+              source = focused ? require("./img/icons/search-bold.png") : require("./img/icons/search.png")
+              return (
+                <Image source={source} style={{ height: 32, width: 32 }} />
+              );
+            }
+            if (route.name === "YourLibrary") {
+              source = focused ? require("./img/icons/library-bold.png") : require("./img/icons/library.png")
+              return (
+                <Image source={source} style={{ height: 32, width: 32 }} />
+              );
+            }
+          },
+        })}
+        tabBarOptions={{
+          tabStyle: { backgroundColor: "#282828", borderTopColor: "transparent", borderTopWidth: 0 },
+          activeTintColor: "white",
+          inactiveTintColor: "gray",
+          borderTopColor: "transparent"
+        }}
+      >
+        <Tab.Screen name="Home" component={Home} />
+        <Tab.Screen name="Search" component={Search} />
+        <Tab.Screen name="YourLibrary" component={YourLibrary} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
