@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
 import ExtendedCard from "./components/ExtendedCard";
 import {
   StyleSheet,
@@ -8,48 +8,111 @@ import {
   SafeAreaView,
   ScrollView,
   Image,
+  Dimensions,
+  Animated
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Constants from "expo-constants";
 
 export default function App() {
-  const [playlists, setPlaylists] = useState([
-    { thumbnail: "./img/spotify_album_thumbnail_1", title: "Hits 2009" },
-    { thumbnail: "./img/spotify_album_thumbnail_2", title: "Rewind" },
-    { thumbnail: "./img/spotify_album_thumbnail_3", title: "Get Started" },
-    { thumbnail: "./img/spotify_album_thumbnail_4", title: "Lo-Fi Chill" },
-  ]);
-  // const playlists = [
-  //   { thumbnail: "./img/spotify_album_thumbnail_1", title: 'Hits 2009' },
-  //   { thumbnail: "./img/spotify_album_thumbnail_2", title: 'Rewind' },
-  //   { thumbnail: "./img/spotify_album_thumbnail_3", title: 'Get Started' },
-  //   { thumbnail: "./img/spotify_album_thumbnail_4", title: 'Lo-Fi Chill' },
-  // ]
+  const recommendations = [
+    {
+      thumbnail: require("./img/spotify_album_thumbnail_1.jpg"),
+      title: "Lo-Fi Chill",
+    },
+    {
+      thumbnail: require("./img/time-capsule-blue_LARGE-en.jpg"),
+      title: "Time Capsule",
+    },
+    {
+      thumbnail: require("./img/on_repeat.jpg"),
+      title: "On Repeat",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-tame_impala-1-220x220.png"),
+      title: "Tame Impala",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-honne-1-220x220.png"),
+      title: "Honne",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-danilla-1-220x220.png"),
+      title: "Damilla",
+    },
+  ];
+  const recents = [
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-doja_cat-1-220x220.png"),
+      title: "Say So",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-kodaline-1-220x220.png"),
+      title: "High Hope",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-bruno_mars-1-220x220.png"),
+      title: "Locked Out of Heaven",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-kunto_aji-1-220x220.png"),
+      title: "Pilu Membiru",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-daniel_caesar-1-220x220.png"),
+      title: "Best Part (feat. H.E.R.)",
+    },
+  ];
+  const newReleases = [
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-clean_bandit-1-220x220.png"),
+      title: "Tears (feat. Louisa Johnson)",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-daft_punk-1-220x220.png"),
+      title: "Give Life Back to Music",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-reality_club-1-220x220.png"),
+      title: "Elastic Hearts",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-john_mayer-1-220x220.png"),
+      title: "Still Fell Like Your Man",
+    },
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-sal_priadi-1-220x220.png"),
+      title: "Amin Paling Serius",
+    },
+  ]
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
+      <LinearGradient
+        style={{
+          position: "absolute",
+          left: 0,
+          right: 0,
+          top: 0,
+          height: 400,
+          marginTop: -16,
+          marginLeft: -16 - Constants.statusBarHeight,
+        }}
+        colors={["#4f18f0", "2F1088", "transparent", "transparent"]}
+        start={{ x: 0, y: 0 }}
+        end={{ x: 0.25, y: 1 }}
+      />
       <ScrollView
         style={{
-          paddingVertical: 16,
+          paddingTop: 16,
           paddingLeft: 16,
           paddingRight: 8,
           flex: 1,
         }}
+        contentContainerStyle={{
+          paddingBottom: 32
+        }}
       >
-        <LinearGradient
-          style={{
-            position: "absolute",
-            left: 0,
-            right: 0,
-            top: 0,
-            height: 400,
-            marginTop: -16,
-            marginLeft: -16 - Constants.statusBarHeight,
-          }}
-          colors={["#4f18f0", "2F1088", "transparent", "transparent"]}
-          start={{ x: 0, y: 0 }}
-          end={{ x: .25, y: 1 }}
-        />
         <View
           style={{
             paddingTop: 32,
@@ -70,111 +133,91 @@ export default function App() {
             flexWrap: "wrap",
           }}
         >
-          <ExtendedCard
-            title={"Chill"}
-            thumbnail={require("./img/spotify_album_thumbnail_1.jpg")}
-          />
-          <ExtendedCard
-            title={"Time Capsule"}
-            thumbnail={require("./img/time-capsule-blue_LARGE-en.jpg")}
-          />
-          <ExtendedCard
-            title={"Calm"}
-            thumbnail={require("./img/spotify_album_thumbnail_3.jpg")}
-          />
-          <ExtendedCard
-            title={"Paramore"}
-            thumbnail={require("./img/spotify_album_thumbnail_4.jpg")}
-          />
-          <ExtendedCard
-            title={"John Mayer"}
-            thumbnail={require("./img/spotify_album_thumbnail_5.jpg")}
-          />
-          <ExtendedCard
-            title={"Pamungkas"}
-            thumbnail={require("./img/spotify_album_thumbnail_6.jpg")}
-          />
+          {recommendations.map((recommendation, i) => (
+            <ExtendedCard
+              key={i}
+              title={recommendation.title}
+              thumbnail={recommendation.thumbnail}
+            />
+          ))}
         </View>
-        <View
-          style={{
-            paddingTop: 4,
-            paddingBottom: 4,
-            marginBottom: 8,
-          }}
-        >
-          <Text style={[styles.textWhite, styles.textTitle, { marginBottom: 8 }] }>
-            Recently Played
-          </Text>
-        </View>
-        <ScrollView horizontal={true} style={{ marginLeft: -16, marginRight: -8 }}>
+        <View style={{ marginBottom: 16 }}>
           <View
             style={{
-              width: 112,
-              marginLeft: 16,
-              marginRight: 16,
+              paddingTop: 4,
+              paddingBottom: 4,
+              marginBottom: 8,
             }}
           >
-            <Image
-              source={require("./img/spotify_album_thumbnail_7.png")}
-              style={{ height: 112, width: 112, marginBottom: 8 }}
-            />
-            <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>Say So</Text>
-          </View>
-          <View
-            style={{
-              width: 112,
-              marginRight: 16,
-            }}
-          >
-            <Image
-              source={require("./img/spotify_album_thumbnail_11.png")}
-              style={{ height: 112, width: 112, marginBottom: 8 }}
-            />
-            <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>
-              American Idiot
+            <Text
+              style={[styles.textWhite, styles.textTitle, { marginBottom: 8 }]}
+            >
+              Recently Played
             </Text>
           </View>
+          <ScrollView
+            horizontal={true}
+            style={{ marginLeft: -16 }}
+          >
+            {recents.map((recent, i) => (
+              <View
+                key={i}
+                style={{
+                  width: 112,
+                  marginLeft: i === 0 ? 16 : 8,
+                  marginRight: 8,
+                }}
+              >
+                <Image
+                  source={recent.thumbnail}
+                  style={{ height: 112, width: 112, marginBottom: 8 }}
+                />
+                <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>
+                  {recent.title}
+                </Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
+        <View style={{ marginBottom: 16 }}>
           <View
             style={{
-              width: 112,
-              marginRight: 16,
+              paddingTop: 4,
+              paddingBottom: 4,
+              marginBottom: 8,
             }}
           >
-            <Image
-              source={require("./img/spotify_album_thumbnail_8.png")}
-              style={{ height: 112, width: 112, marginBottom: 8 }}
-            />
-            <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>
-              Locked Out of Heaven
+            <Text
+              style={[styles.textWhite, styles.textTitle, { marginBottom: 8 }]}
+            >
+              New Release
             </Text>
           </View>
-          <View
-            style={{
-              width: 112,
-              marginRight: 16,
-            }}
+          <ScrollView
+            horizontal={true}
+            style={{ marginLeft: -16 }}
           >
-            <Image
-              source={require("./img/spotify_album_thumbnail_9.jpeg")}
-              style={{ height: 112, width: 112, marginBottom: 8 }}
-            />
-            <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>Pilu Membiru</Text>
-          </View>
-          <View
-            style={{
-              width: 112,
-              marginRight: 16,
-            }}
-          >
-            <Image
-              source={require("./img/spotify_album_thumbnail_10.jpeg")}
-              style={{ height: 112, width: 112, marginBottom: 8 }}
-            />
-            <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>It's Time</Text>
-          </View>
-        </ScrollView>
+            {newReleases.map((newRelease, i) => (
+              <View
+                key={i}
+                style={{
+                  marginLeft: i === 0 ? 16 : 8,
+                  marginRight: 8,
+                }}
+              >
+                <Image
+                  source={newRelease.thumbnail}
+                  style={{ height: 144, width: 144, marginBottom: 8 }}
+                />
+                <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16, maxWidth: 144 }}>
+                  {newRelease.title}
+                </Text>
+              </View>
+            ))}
+          </ScrollView>
+        </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 
