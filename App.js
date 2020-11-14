@@ -9,7 +9,7 @@ import {
   ScrollView,
   Image,
   Dimensions,
-  Animated
+  Animated,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Constants from "expo-constants";
@@ -38,10 +38,14 @@ export default function App() {
     },
     {
       thumbnail: require("./img/220x220/album-thumbnail-danilla-1-220x220.png"),
-      title: "Damilla",
+      title: "Danilla",
     },
   ];
   const recents = [
+    {
+      thumbnail: require("./img/220x220/album-thumbnail-bruno_mars-1-220x220.png"),
+      title: "Locked Out of Heaven",
+    },
     {
       thumbnail: require("./img/220x220/album-thumbnail-doja_cat-1-220x220.png"),
       title: "Say So",
@@ -49,10 +53,6 @@ export default function App() {
     {
       thumbnail: require("./img/220x220/album-thumbnail-kodaline-1-220x220.png"),
       title: "High Hope",
-    },
-    {
-      thumbnail: require("./img/220x220/album-thumbnail-bruno_mars-1-220x220.png"),
-      title: "Locked Out of Heaven",
     },
     {
       thumbnail: require("./img/220x220/album-thumbnail-kunto_aji-1-220x220.png"),
@@ -84,7 +84,7 @@ export default function App() {
       thumbnail: require("./img/220x220/album-thumbnail-sal_priadi-1-220x220.png"),
       title: "Amin Paling Serius",
     },
-  ]
+  ];
 
   return (
     <View style={styles.container}>
@@ -105,67 +105,87 @@ export default function App() {
       <ScrollView
         style={{
           paddingTop: 16,
-          paddingLeft: 16,
-          paddingRight: 8,
+          // paddingLeft: 16,
+          // paddingRight: 8,
           flex: 1,
         }}
         contentContainerStyle={{
-          paddingBottom: 32
+          paddingBottom: 32,
         }}
       >
         <View
           style={{
             paddingTop: 32,
-            paddingBottom: 8,
+          }}
+        >
+          <Text
+            style={[
+              styles.textWhite,
+              styles.textTitle,
+              styles.horizontalPadding,
+              { marginBottom: 16 },
+            ]}
+          >
+            Good afternoon
+          </Text>
+          <View
+            style={[
+              styles.horizontalPadding,
+              {
+                height: 224,
+                width: "100%",
+                marginTop: -8,
+                marginLeft: -8,
+                flexWrap: "wrap",
+              },
+            ]}
+          >
+            {recommendations.map((recommendation, i) => (
+              <ExtendedCard
+                key={i}
+                title={recommendation.title}
+                thumbnail={recommendation.thumbnail}
+              />
+            ))}
+          </View>
+        </View>
+
+        <View
+          style={{
+            paddingTop: 4,
+            paddingBottom: 4,
             marginBottom: 8,
           }}
         >
-          <Text style={[styles.textWhite, styles.textTitle]}>
-            Good afternoon
-          </Text>
-        </View>
-        <View
-          style={{
-            height: 224,
-            width: "100%",
-            marginTop: -8,
-            marginLeft: -8,
-            flexWrap: "wrap",
-          }}
-        >
-          {recommendations.map((recommendation, i) => (
-            <ExtendedCard
-              key={i}
-              title={recommendation.title}
-              thumbnail={recommendation.thumbnail}
-            />
-          ))}
-        </View>
-        <View style={{ marginBottom: 16 }}>
-          <View
-            style={{
-              paddingTop: 4,
-              paddingBottom: 4,
-              marginBottom: 8,
-            }}
+          <Text
+            style={[
+              styles.textWhite,
+              styles.textTitle,
+              styles.horizontalPadding,
+              { marginBottom: 16 },
+            ]}
           >
-            <Text
-              style={[styles.textWhite, styles.textTitle, { marginBottom: 8 }]}
-            >
-              Recently Played
-            </Text>
-          </View>
+            Recently Played
+          </Text>
           <ScrollView
-            horizontal={true}
-            style={{ marginLeft: -16 }}
+            horizontal
+            style={[
+              styles.horizontalPadding,
+              {
+                marginTop: -16,
+                marginLeft: -16,
+              },
+            ]}
+            contentContainerStyle={{ paddingRight: 32, paddingBottom: 16 }}
           >
             {recents.map((recent, i) => (
               <View
                 key={i}
                 style={{
-                  width: 112,
-                  marginLeft: i === 0 ? 16 : 8,
-                  marginRight: 8,
+                  maxWidth: 112 + 16,
+                  paddingTop: 16,
+                  paddingLeft: 16,
+                  paddingBottom: 16,
                 }}
               >
                 <Image
@@ -179,37 +199,56 @@ export default function App() {
             ))}
           </ScrollView>
         </View>
-        <View style={{ marginBottom: 16 }}>
-          <View
-            style={{
-              paddingTop: 4,
-              paddingBottom: 4,
-              marginBottom: 8,
-            }}
+
+        <View
+          style={{
+            paddingTop: 4,
+            paddingBottom: 4,
+            marginBottom: 8,
+          }}
+        >
+          <Text
+            style={[
+              styles.textWhite,
+              styles.textTitle,
+              styles.horizontalPadding,
+              { marginBottom: 16 },
+            ]}
           >
-            <Text
-              style={[styles.textWhite, styles.textTitle, { marginBottom: 8 }]}
-            >
-              New Release
-            </Text>
-          </View>
+            New Release
+          </Text>
           <ScrollView
-            horizontal={true}
-            style={{ marginLeft: -16 }}
+            horizontal
+            style={[
+              styles.horizontalPadding,
+              {
+                marginTop: -16,
+                marginLeft: -16,
+              },
+            ]}
+            contentContainerStyle={{ paddingRight: 32, paddingBottom: 16 }}
           >
             {newReleases.map((newRelease, i) => (
               <View
                 key={i}
                 style={{
-                  marginLeft: i === 0 ? 16 : 8,
-                  marginRight: 8,
+                  maxWidth: 144 + 16,
+                  paddingTop: 16,
+                  paddingLeft: 16,
+                  paddingBottom: 16,
                 }}
               >
                 <Image
                   source={newRelease.thumbnail}
                   style={{ height: 144, width: 144, marginBottom: 8 }}
                 />
-                <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16, maxWidth: 144 }}>
+                <Text
+                  style={{
+                    fontSize: 12,
+                    color: "#fff",
+                    lineHeight: 16,
+                  }}
+                >
                   {newRelease.title}
                 </Text>
               </View>
@@ -232,5 +271,9 @@ const styles = StyleSheet.create({
   textTitle: {
     fontSize: 24,
     fontWeight: "bold",
+  },
+  horizontalPadding: {
+    paddingLeft: 16,
+    paddingRight: 8,
   },
 });
