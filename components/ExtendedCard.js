@@ -1,5 +1,6 @@
 import React from "react";
 import { Text, View, Image } from "react-native";
+import Line from './Line'
 
 export default function ExtendedCard({ thumbnail, title }) {
   return (
@@ -29,7 +30,7 @@ export default function ExtendedCard({ thumbnail, title }) {
             borderBottomLeftRadius: 8,
           }}
         />
-        <Text
+        <Line
           style={{
             marginLeft: 8,
             fontWeight: "bold",
@@ -38,7 +39,7 @@ export default function ExtendedCard({ thumbnail, title }) {
           }}
         >
           { title }
-        </Text>
+        </Line>
       </View>
     </View>
   );

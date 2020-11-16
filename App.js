@@ -1,6 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import ExtendedCard from "./components/ExtendedCard";
+import Line from "./components/Line";
 import {
   StyleSheet,
   Text,
@@ -15,10 +16,6 @@ import { LinearGradient } from "expo-linear-gradient";
 import Constants from "expo-constants";
 import { NavigationContainer, TabActions } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { Foundation } from "@expo/vector-icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { Ionicons } from "@expo/vector-icons";
-import { FontAwesome5 } from "@expo/vector-icons";
 
 function Home() {
   const recommendations = [
@@ -124,7 +121,8 @@ function Home() {
             paddingTop: 32,
           }}
         >
-          <Text
+          <Line
+            weight={"bold"}
             style={[
               styles.textWhite,
               styles.textTitle,
@@ -132,8 +130,8 @@ function Home() {
               { marginBottom: 16 },
             ]}
           >
-            Good afternoon
-          </Text>
+            Good evening
+          </Line>
           <View
             style={[
               styles.horizontalPadding,
@@ -163,7 +161,8 @@ function Home() {
             marginBottom: 8,
           }}
         >
-          <Text
+          <Line
+            weight={"bold"}
             style={[
               styles.textWhite,
               styles.textTitle,
@@ -172,7 +171,7 @@ function Home() {
             ]}
           >
             Recently Played
-          </Text>
+          </Line>
           <ScrollView
             horizontal
             style={[
@@ -198,9 +197,9 @@ function Home() {
                   source={recent.thumbnail}
                   style={{ height: 112, width: 112, marginBottom: 8 }}
                 />
-                <Text style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>
+                <Line style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>
                   {recent.title}
-                </Text>
+                </Line>
               </View>
             ))}
           </ScrollView>
@@ -213,7 +212,8 @@ function Home() {
             marginBottom: 8,
           }}
         >
-          <Text
+          <Line
+            weight={"bold"}
             style={[
               styles.textWhite,
               styles.textTitle,
@@ -222,7 +222,7 @@ function Home() {
             ]}
           >
             New Release
-          </Text>
+          </Line>
           <ScrollView
             horizontal
             style={[
@@ -248,7 +248,7 @@ function Home() {
                   source={newRelease.thumbnail}
                   style={{ height: 144, width: 144, marginBottom: 8 }}
                 />
-                <Text
+                <Line
                   style={{
                     fontSize: 12,
                     color: "#fff",
@@ -256,7 +256,7 @@ function Home() {
                   }}
                 >
                   {newRelease.title}
-                </Text>
+                </Line>
               </View>
             ))}
           </ScrollView>
@@ -292,19 +292,25 @@ export default function App() {
           tabBarIcon: ({ focused, color, size }) => {
             let source;
             if (route.name === "Home") {
-              source = focused ? require("./img/icons/home.png") : require("./img/icons/home-outline.png")
+              source = focused
+                ? require("./img/icons/home.png")
+                : require("./img/icons/home-outline.png");
               return (
                 <Image source={source} style={{ height: 32, width: 32 }} />
               );
             }
             if (route.name === "Search") {
-              source = focused ? require("./img/icons/search-bold.png") : require("./img/icons/search.png")
+              source = focused
+                ? require("./img/icons/search-bold.png")
+                : require("./img/icons/search.png");
               return (
                 <Image source={source} style={{ height: 32, width: 32 }} />
               );
             }
             if (route.name === "YourLibrary") {
-              source = focused ? require("./img/icons/library-bold.png") : require("./img/icons/library.png")
+              source = focused
+                ? require("./img/icons/library-bold.png")
+                : require("./img/icons/library.png");
               return (
                 <Image source={source} style={{ height: 32, width: 32 }} />
               );
@@ -312,10 +318,14 @@ export default function App() {
           },
         })}
         tabBarOptions={{
-          tabStyle: { backgroundColor: "#282828", borderTopColor: "transparent", borderTopWidth: 0 },
+          tabStyle: {
+            backgroundColor: "#282828",
+            borderTopColor: "transparent",
+            borderTopWidth: 0,
+          },
           activeTintColor: "white",
           inactiveTintColor: "gray",
-          borderTopColor: "transparent"
+          borderTopColor: "transparent",
         }}
       >
         <Tab.Screen name="Home" component={Home} />
