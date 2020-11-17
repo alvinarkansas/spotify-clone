@@ -318,14 +318,12 @@ export default function App() {
           },
         })}
         tabBarOptions={{
-          tabStyle: {
-            backgroundColor: "#282828",
-            borderTopColor: "transparent",
-            borderTopWidth: 0,
-          },
           activeTintColor: "white",
           inactiveTintColor: "gray",
-          borderTopColor: "transparent",
+          style: {
+            backgroundColor: '#282828',
+            borderTopWidth: 0,
+          }
         }}
       >
         <Tab.Screen name="Home" component={Home} />
