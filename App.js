@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import React, { useState } from "react";
 import ExtendedCard from "./components/ExtendedCard";
 import Line from "./components/Line";
+import Thumbnail from './components/Thumbnail';
+
 import {
   StyleSheet,
   Text,
@@ -10,7 +12,6 @@ import {
   ScrollView,
   Image,
   Dimensions,
-  Animated,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import Constants from "expo-constants";
@@ -184,23 +185,7 @@ function Home() {
             contentContainerStyle={{ paddingRight: 32, paddingBottom: 16 }}
           >
             {recents.map((recent, i) => (
-              <View
-                key={i}
-                style={{
-                  maxWidth: 112 + 16,
-                  paddingTop: 16,
-                  paddingLeft: 16,
-                  paddingBottom: 16,
-                }}
-              >
-                <Image
-                  source={recent.thumbnail}
-                  style={{ height: 112, width: 112, marginBottom: 8 }}
-                />
-                <Line style={{ fontSize: 12, color: "#fff", lineHeight: 16 }}>
-                  {recent.title}
-                </Line>
-              </View>
+              <Thumbnail key={i} info={recent} />
             ))}
           </ScrollView>
         </View>
@@ -321,9 +306,9 @@ export default function App() {
           activeTintColor: "white",
           inactiveTintColor: "gray",
           style: {
-            backgroundColor: '#282828',
+            backgroundColor: "#282828",
             borderTopWidth: 0,
-          }
+          },
         }}
       >
         <Tab.Screen name="Home" component={Home} />
