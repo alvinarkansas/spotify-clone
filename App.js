@@ -185,7 +185,7 @@ function Home() {
             contentContainerStyle={{ paddingRight: 32, paddingBottom: 16 }}
           >
             {recents.map((recent, i) => (
-              <Thumbnail key={i} info={recent} />
+              <Thumbnail key={i} info={recent} size={112} />
             ))}
           </ScrollView>
         </View>
@@ -220,29 +220,30 @@ function Home() {
             contentContainerStyle={{ paddingRight: 32, paddingBottom: 16 }}
           >
             {newReleases.map((newRelease, i) => (
-              <View
-                key={i}
-                style={{
-                  maxWidth: 144 + 16,
-                  paddingTop: 16,
-                  paddingLeft: 16,
-                  paddingBottom: 16,
-                }}
-              >
-                <Image
-                  source={newRelease.thumbnail}
-                  style={{ height: 144, width: 144, marginBottom: 8 }}
-                />
-                <Line
-                  style={{
-                    fontSize: 12,
-                    color: "#fff",
-                    lineHeight: 16,
-                  }}
-                >
-                  {newRelease.title}
-                </Line>
-              </View>
+              <Thumbnail key={i} info={newRelease} size={144} />
+              // <View
+              //   key={i}
+              //   style={{
+              //     maxWidth: 144 + 16,
+              //     paddingTop: 16,
+              //     paddingLeft: 16,
+              //     paddingBottom: 16,
+              //   }}
+              // >
+              //   <Image
+              //     source={newRelease.thumbnail}
+              //     style={{ height: 144, width: 144, marginBottom: 8 }}
+              //   />
+              //   <Line
+              //     style={{
+              //       fontSize: 12,
+              //       color: "#fff",
+              //       lineHeight: 16,
+              //     }}
+              //   >
+              //     {newRelease.title}
+              //   </Line>
+              // </View>
             ))}
           </ScrollView>
         </View>

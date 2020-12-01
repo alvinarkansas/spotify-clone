@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { View, Animated, Pressable, Image } from "react-native";
 import Line from "./Line";
 
-export default function Thumbnail({ info }) {
+export default function Thumbnail({ info, size }) {
   const scaleValue = useState(new Animated.Value(1))[0]
 
   const handleOnPressIn = () => {
@@ -23,7 +23,7 @@ export default function Thumbnail({ info }) {
   return (
     <View
       style={{
-        maxWidth: 112 + 16,
+        maxWidth: size + 16,
         paddingTop: 16,
         paddingLeft: 16,
         paddingBottom: 16,
@@ -31,8 +31,8 @@ export default function Thumbnail({ info }) {
     >
       <Animated.View
         style={{
-          width: 112,
-          height: 112,
+          width: size,
+          height: size,
           marginBottom: 8,
           transform: [{ scale: scaleValue }],
         }}
