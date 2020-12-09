@@ -1,0 +1,22 @@
+[
+    {
+        "genre": "Lo-Fi",
+        "thumbnail": "playlist-thumbnail-lofi_beats-220x220.png",
+        "background": "#85A5BA"
+    },
+    {
+        "genre": "Rock",
+        "thumbnail": "playlist-thumbnail-rock_classic-220x220.png",
+        "background": "#D64B37"
+    },
+    {
+        "genre": "Chill",
+        "thumbnail": "playlist-thumbnail-spotyfy_chill-220x220.png",
+        "background": "#01327A"
+    },
+    {
+        "genre": "Indie",
+        "thumbnail": "playlist-thumbnail-indie_sunshine-220x220.png",
+        "background": "#D0BB4D"
+    }
+]

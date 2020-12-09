@@ -1,0 +1,42 @@
+[
+    {
+        "genre": "Calm",
+        "thumbnail": "playlist-thumbnail-calm_vibes-220x220.png",
+        "background": "#845241"
+    },
+    {
+        "genre": "Pop",
+        "thumbnail": "playlist-thumbnail-pop_right_now-220x220.png",
+        "background": "#5D7A89"
+    },
+    {
+        "genre": "Jazz",
+        "thumbnail": "playlist-thumbnail-late_night_jazz-220x220.png",
+        "background": "#253949"
+    },
+    {
+        "genre": "Classical",
+        "thumbnail": "playlist-thumbnail-classic_essentials-220x220.png",
+        "background": "#A44A24"
+    },
+    {
+        "genre": "Dance",
+        "thumbnail": "playlist-thumbnail-dance_party-220x220.png",
+        "background": "#92340E"
+    },
+    {
+        "genre": "Study",
+        "thumbnail": "playlist-thumbnail-instrumental_study-220x220.png",
+        "background": "#3A404A"
+    },
+    {
+        "genre": "Electro",
+        "thumbnail": "playlist-thumbnail-electro_chill-220x220.png",
+        "background": "#59B9DF"
+    },
+    {
+        "genre": "Love Pop",
+        "thumbnail": "playlist-thumbnail-love_pop-220x220.png",
+        "background": "#9ABECE"
+    }
+]
