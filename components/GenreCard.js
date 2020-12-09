@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Image } from "react-native";
+import { View, Image, Pressable } from "react-native";
 import Line from "../components/Line";
 
 export default function GenreCard({ genre, thumbnail, background }) {
@@ -11,15 +11,16 @@ export default function GenreCard({ genre, thumbnail, background }) {
         paddingLeft: 16,
       }}
     >
-      <View
-        style={{
+      <Pressable
+        style={({ pressed }) => [{
           height: 88,
           borderRadius: 4,
           padding: 12,
           backgroundColor: background,
           position: "relative",
           overflow: "hidden",
-        }}
+          opacity: pressed ? .75 : 1
+        }]}
       >
         <Line weight={"bold"} style={{ fontSize: 16 }}>
           {genre}
@@ -36,7 +37,7 @@ export default function GenreCard({ genre, thumbnail, background }) {
             transform: [{ rotate: "25deg" }],
           }}
         />
-      </View>
+      </Pressable>
     </View>
   );
 }

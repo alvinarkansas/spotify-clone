@@ -1,5 +1,12 @@
 import React from "react";
-import { StyleSheet, View, ScrollView, TextInput, Image } from "react-native";
+import {
+  StyleSheet,
+  View,
+  ScrollView,
+  TextInput,
+  Image,
+  Pressable,
+} from "react-native";
 import Constants from "expo-constants";
 import GlobalStyles from "../globalStyle";
 
@@ -7,7 +14,7 @@ import Line from "../components/Line";
 import GenreCard from "../components/GenreCard";
 
 import topGenres from "../data/top-genres.json";
-import allGenres from '../data/all-genres.json'
+import allGenres from "../data/all-genres.json";
 
 export default function Search() {
   return (
@@ -27,7 +34,7 @@ export default function Search() {
         <View
           style={{
             paddingTop: 8,
-            paddingBottom: 24,
+            paddingBottom: 16,
           }}
         >
           <Line
@@ -36,12 +43,27 @@ export default function Search() {
           >
             Search
           </Line>
-          <TextInput
-            style={{ height: 42, backgroundColor: "#fff", borderRadius: 8 }}
-          ></TextInput>
+          <Pressable
+            style={{
+              height: 42,
+              paddingHorizontal: 12,
+              backgroundColor: "#fff",
+              borderRadius: 8,
+              alignItems: "center",
+              flexDirection: "row",
+            }}
+          >
+            <Image
+              source={require("../img/icons/search-bold-dark.png")}
+              style={{ height: 24, width: 24, marginRight: 8 }}
+            />
+            <Line style={{ color: "#333333" }}>
+              Artists, songs, or podcasts
+            </Line>
+          </Pressable>
         </View>
-        <View style={{ width: "100%", marginBottom: 24 }}>
-          <Line weight={"bold"} style={[{ fontSize: 16, marginBottom: 32 }]}>
+        <View style={{ width: "100%", marginBottom: 16 }}>
+          <Line weight={"bold"} style={[{ fontSize: 16, marginTop: 16, marginBottom: 32 }]}>
             Your top genres
           </Line>
           <View style={{ width: "100%" }}>
@@ -64,8 +86,8 @@ export default function Search() {
             </View>
           </View>
         </View>
-        <View style={{ width: "100%", marginBottom: 24 }}>
-          <Line weight={"bold"} style={[{ fontSize: 16, marginBottom: 32 }]}>
+        <View style={{ width: "100%", marginBottom: 16 }}>
+          <Line weight={"bold"} style={[{ fontSize: 16, marginTop: 16, marginBottom: 32 }]}>
             Browse all
           </Line>
           <View style={{ width: "100%" }}>
