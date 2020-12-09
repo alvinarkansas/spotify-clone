@@ -5,6 +5,7 @@ import Constants from "expo-constants";
 import ExtendedCard from "../components/ExtendedCard";
 import Line from "../components/Line";
 import Thumbnail from "../components/Thumbnail";
+import GlobalStyles from '../globalStyle'
 
 export default function Home() {
   const recommendations = [
@@ -95,10 +96,9 @@ export default function Home() {
         end={{ x: 0.25, y: 1 }}
       />
       <ScrollView
+        // you don't wanna add padding here because there will be overflowing contents
         style={{
           paddingTop: 16 + Constants.statusBarHeight,
-          // paddingLeft: 16,
-          // paddingRight: 8,
           flex: 1,
         }}
         contentContainerStyle={{
@@ -113,9 +113,8 @@ export default function Home() {
           <Line
             weight={"bold"}
             style={[
-              styles.textWhite,
-              styles.textTitle,
-              styles.horizontalPadding,
+              GlobalStyles.textSubtitle,
+              GlobalStyles.horizontalPadding,
               { marginBottom: 16 },
             ]}
           >
@@ -123,13 +122,13 @@ export default function Home() {
           </Line>
           <View
             style={[
-              styles.horizontalPadding,
+              GlobalStyles.horizontalPadding,
               {
                 height: 224,
                 width: "100%",
                 marginTop: -8,
                 marginLeft: -8,
-                flexWrap: "wrap",
+                flexWrap: "wrap"
               },
             ]}
           >
@@ -153,9 +152,8 @@ export default function Home() {
           <Line
             weight={"bold"}
             style={[
-              styles.textWhite,
-              styles.textTitle,
-              styles.horizontalPadding,
+              GlobalStyles.textSubtitle,
+              GlobalStyles.horizontalPadding,
               { marginBottom: 16 },
             ]}
           >
@@ -164,13 +162,13 @@ export default function Home() {
           <ScrollView
             horizontal
             style={[
-              styles.horizontalPadding,
+              GlobalStyles.horizontalPadding,
               {
                 marginTop: -16,
                 marginLeft: -16,
               },
             ]}
-            contentContainerStyle={{ paddingRight: 32, paddingBottom: 16 }}
+            contentContainerStyle={{ paddingRight: 16, paddingBottom: 16 }}
           >
             {recents.map((recent, i) => (
               <Thumbnail key={i} info={recent} size={112} />
@@ -188,9 +186,8 @@ export default function Home() {
           <Line
             weight={"bold"}
             style={[
-              styles.textWhite,
-              styles.textTitle,
-              styles.horizontalPadding,
+              GlobalStyles.textSubtitle,
+              GlobalStyles.horizontalPadding,
               { marginBottom: 16 },
             ]}
           >
@@ -199,13 +196,13 @@ export default function Home() {
           <ScrollView
             horizontal
             style={[
-              styles.horizontalPadding,
+              GlobalStyles.horizontalPadding,
               {
                 marginTop: -16,
                 marginLeft: -16,
               },
             ]}
-            contentContainerStyle={{ paddingRight: 32, paddingBottom: 16 }}
+            contentContainerStyle={{ paddingRight: 16, paddingBottom: 16 }}
           >
             {newReleases.map((newRelease, i) => (
               <Thumbnail key={i} info={newRelease} size={144} />
@@ -221,16 +218,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#0a0a0a",
-  },
-  textWhite: {
-    color: "#fff",
-  },
-  textTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  horizontalPadding: {
-    paddingLeft: 16,
-    paddingRight: 8,
   },
 });

@@ -61,6 +61,7 @@ export default function ExtendedCard({ thumbnail, title }) {
               borderBottomLeftRadius: 8,
             }}
           />
+          {console.log(thumbnail)}
           <Line
             style={{
               marginLeft: 8,
