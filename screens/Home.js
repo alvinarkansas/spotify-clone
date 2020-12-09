@@ -161,6 +161,7 @@ export default function Home() {
           </Line>
           <ScrollView
             horizontal
+            showsHorizontalScrollIndicator={false}
             style={[
               GlobalStyles.horizontalPadding,
               {
@@ -195,6 +196,7 @@ export default function Home() {
           </Line>
           <ScrollView
             horizontal
+            showsHorizontalScrollIndicator={false}
             style={[
               GlobalStyles.horizontalPadding,
               {
