@@ -26,7 +26,7 @@ export default function GenreCard({ genre, thumbnail, background }) {
           {genre}
         </Line>
         <Image
-          source={require(`../img/220x220/${thumbnail}`)}
+          source={thumbnail}
           style={{
             height: 64,
             width: 64,

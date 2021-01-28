@@ -13,8 +13,76 @@ import GlobalStyles from "../globalStyle";
 import Line from "../components/Line";
 import GenreCard from "../components/GenreCard";
 
-import topGenres from "../data/top-genres.json";
-import allGenres from "../data/all-genres.json";
+// import topGenres from "../data/top-genres.json";
+// import allGenres from "../data/all-genres.json";
+
+const topGenres = [
+  {
+    genre: "Lo-Fi",
+    thumbnail: "../img/220x220/playlist-thumbnail-lofi_beats-220x220.png",
+    background: "#85A5BA",
+  },
+  {
+    genre: "Rock",
+    thumbnail: "../img/220x220/playlist-thumbnail-rock_classic-220x220.png",
+    background: "#D64B37",
+  },
+  {
+    genre: "Chill",
+    thumbnail: "../img/220x220/playlist-thumbnail-spotyfy_chill-220x220.png",
+    background: "#01327A",
+  },
+  {
+    genre: "Indie",
+    thumbnail: "../img/220x220/playlist-thumbnail-indie_sunshine-220x220.png",
+    background: "#D0BB4D",
+  },
+];
+
+const allGenres = [
+  {
+    genre: "Calm",
+    thumbnail: "../img/220x220/playlist-thumbnail-calm_vibes-220x220.png",
+    background: "#845241",
+  },
+  {
+    genre: "Pop",
+    thumbnail: "../img/220x220/playlist-thumbnail-pop_right_now-220x220.png",
+    background: "#5D7A89",
+  },
+  {
+    genre: "Jazz",
+    thumbnail: "../img/220x220/playlist-thumbnail-late_night_jazz-220x220.png",
+    background: "#253949",
+  },
+  {
+    genre: "Classical",
+    thumbnail:
+      "../img/220x220/playlist-thumbnail-classic_essentials-220x220.png",
+    background: "#A44A24",
+  },
+  {
+    genre: "Dance",
+    thumbnail: "../img/220x220/playlist-thumbnail-dance_party-220x220.png",
+    background: "#92340E",
+  },
+  {
+    genre: "Study",
+    thumbnail:
+      "../img/220x220/playlist-thumbnail-instrumental_study-220x220.png",
+    background: "#3A404A",
+  },
+  {
+    genre: "Electro",
+    thumbnail: "../img/220x220/playlist-thumbnail-electro_chill-220x220.png",
+    background: "#59B9DF",
+  },
+  {
+    genre: "Love Pop",
+    thumbnail: "../img/220x220/playlist-thumbnail-love_pop-220x220.png",
+    background: "#9ABECE",
+  },
+];
 
 export default function Search() {
   return (
@@ -63,7 +131,10 @@ export default function Search() {
           </Pressable>
         </View>
         <View style={{ width: "100%", marginBottom: 16 }}>
-          <Line weight={"bold"} style={[{ fontSize: 16, marginTop: 16, marginBottom: 32 }]}>
+          <Line
+            weight={"bold"}
+            style={[{ fontSize: 16, marginTop: 16, marginBottom: 32 }]}
+          >
             Your top genres
           </Line>
           <View style={{ width: "100%" }}>
@@ -87,7 +158,10 @@ export default function Search() {
           </View>
         </View>
         <View style={{ width: "100%", marginBottom: 16 }}>
-          <Line weight={"bold"} style={[{ fontSize: 16, marginTop: 16, marginBottom: 32 }]}>
+          <Line
+            weight={"bold"}
+            style={[{ fontSize: 16, marginTop: 16, marginBottom: 32 }]}
+          >
             Browse all
           </Line>
           <View style={{ width: "100%" }}>
